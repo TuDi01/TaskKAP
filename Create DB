@@ -1,0 +1,77 @@
+-- create DB
+create database KAP
+
+-- create table
+CREATE TABLE Report (
+	NumId INT AUTO_INCREMENT PRIMARY KEY,
+	Num varCHAR(20) NOT NULL,
+	dbeg TIMESTAMP NOT NULL,
+	dend TIMESTAMP NOT NULL,
+	dbeg_stocks INT NULL,
+	dend_stocks INT NULL,
+	dbeg_price INT NULL,
+	dend_price INT NULL,
+	diff_q INT NULL,
+	diff_cos INT NULL
+);
+
+--Values in the table Q1 (01/01/2016 - 31/03/2016)
+INSERT INTO Report (Num,dbeg,dend
+					,dbeg_stocks,dend_stocks
+					,dbeg_price,dend_price
+					,diff_q,diff_cos
+					)
+    SELECT Num,dbeg,dend,dbeg_stocks,dend_stocks,dbeg_price,dend_price,
+					dend_stocks-dbeg_stocks,dend_price - dbeg_price	
+    FROM (SELECT '123' as Num, '2016.01.01' as dbeg, '2016.03.31' as dend,2 as dbeg_stocks ,3 as dend_stocks
+				,200 as dbeg_price ,300 as dend_price) Report;
+--Values in the table Q2 (01/04/2016 - 30/06/2016)
+INSERT INTO Report (Num,dbeg,dend
+					,dbeg_stocks,dend_stocks
+					,dbeg_price,dend_price
+					,diff_q,diff_cos
+					)
+    SELECT Num,dbeg,dend,dbeg_stocks,dend_stocks,dbeg_price,dend_price,dend_stocks-dbeg_stocks,dend_price - dbeg_price	
+    FROM (SELECT '123' as Num, '2016.04.01' as dbeg, '2016.06.30' as dend,
+			3 as dbeg_stocks ,5 as dend_stocks,300 as dbeg_price ,500 as dend_price) Report;
+--Values in the table Q3 (01/07/2016 - 30/09/2016)
+INSERT INTO Report	(Num,dbeg,dend
+					,dbeg_stocks,dend_stocks
+					,dbeg_price,dend_price
+					,diff_q,diff_cos
+					)
+    SELECT Num,dbeg,dend,dbeg_stocks,dend_stocks,dbeg_price,dend_price,
+					dend_stocks-dbeg_stocks,dend_price - dbeg_price	
+    FROM (SELECT '123' as Num, '2016.07.01' as dbeg, '2016.09.30' as dend,5 as dbeg_stocks ,4 as dend_stocks
+				,500 as dbeg_price ,400 as dend_price) Report;					
+--Values in the table Q4 (01/10/2016 - 31/12/2016)
+INSERT INTO Report (Num,dbeg,dend
+					,dbeg_stocks,dend_stocks
+					,dbeg_price,dend_price
+					,diff_q,diff_cos
+					)
+    SELECT Num,dbeg,dend,dbeg_stocks,dend_stocks,dbeg_price,dend_price,
+					dend_stocks-dbeg_stocks,dend_price - dbeg_price	
+    FROM (SELECT '123' as Num, '2016.10.01' as dbeg, '2016.12.31' as dend,4 as dbeg_stocks ,6 as dend_stocks
+				,400 as dbeg_price ,600 as dend_price) Report;	
+
+
+--Values in the table Q1 (01/01/2017 - 31/03/2017)
+INSERT INTO Report	(Num,dbeg,dend
+					,dbeg_stocks,dend_stocks
+					,dbeg_price,dend_price
+					,diff_q,diff_cos
+					)
+    SELECT Num,dbeg,dend,dbeg_stocks,dend_stocks,dbeg_price,dend_price,
+					dend_stocks-dbeg_stocks,dend_price - dbeg_price	
+    FROM (SELECT '123' as Num, '2017.01.01' as dbeg, '2017.03.31' as dend,2 as dbeg_stocks ,3 as dend_stocks
+				,200 as dbeg_price ,300 as dend_price) Report;
+--Values in the table Q2 (01/04/2017 - 30/06/2017)
+INSERT INTO Report (Num,dbeg,dend
+					,dbeg_stocks,dend_stocks
+					,dbeg_price,dend_price
+					,diff_q,diff_cos
+					)
+    SELECT Num,dbeg,dend,dbeg_stocks,dend_stocks,dbeg_price,dend_price,dend_stocks-dbeg_stocks,dend_price - dbeg_price	
+    FROM (SELECT '123' as Num, '2017.04.01' as dbeg, '2017.06.30' as dend,
+			3 as dbeg_stocks ,5 as dend_stocks,300 as dbeg_price ,500 as dend_price) Report;
