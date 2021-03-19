@@ -1,0 +1,13 @@
+select Num,(select date(dbeg) from report where quarter (dbeg)=1 and year(dbeg)=2016) as start_date,
+                              (select date(dend) from report where quarter(dbeg)=4 and year(dbeg)=2016) as end_date,
+                              sum(dbeg_stocks) as start_stocks,
+                              sum(dend_stocks) as end_stocks,
+                              sum(dbeg_price) as strat_price,
+                              sum(dend_price) as end_price,
+                              (select sum(diff_q) from report where diff_q>0 and year(dbeg) = 2016) as coming_quantity,
+                              (select sum(diff_cos) from report where diff_cos>0 and year(dbeg) = 2016) as coming_price,
+                              (select sum(diff_q) from report where diff_q<0 and year(dbeg) = 2016) as consumption_quantity,
+                              (select sum(diff_cos) from report where diff_cos<0 and year(dbeg) = 2016) as consumption_price
+     from report
+     where year(dbeg)=2016
+     group by year(dbeg),Num;
